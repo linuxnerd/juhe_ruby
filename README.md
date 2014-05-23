@@ -29,7 +29,7 @@ Juhe::Express.search("顺丰", "575677355677")
 ```
 或者直接将app_key作为参数:
 ```ruby
-Juhe::Express.search("顺丰", "575677355677", "d85fa433fb8f30419dc1b3697b035b3d")
+Juhe::Express.search("顺丰", "575677355677", app_key: "d85fa433fb8f30419dc1b3697b035b3d")
 ```
 返回Hash数组：
 ```ruby
@@ -85,5 +85,5 @@ Juhe::Express.search("顺丰", "575677355677", "d85fa433fb8f30419dc1b3697b035b3d
 ```ruby
 Juhe::Express.refresh_companies
 # or
-Juhe::Express.refresh_companies("d85fa433fb8f30419dc1b3697b035b3d")
+Juhe::Express.refresh_companies(app_key: "d85fa433fb8f30419dc1b3697b035b3d")
 ```

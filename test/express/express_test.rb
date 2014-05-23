@@ -23,7 +23,7 @@ class Juhe::ExpressTest < Test::Unit::TestCase
     result = Juhe::Express.search(
       "顺丰",
       "575677355677",
-      "d85fa433fd8f30419dc1b3697b035b3d"
+      app_key: "d85fa433fd8f30419dc1b3697b035b3d"
     )
     assert_equal(result["com"], "sf")
   end

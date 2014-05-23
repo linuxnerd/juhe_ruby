@@ -15,16 +15,16 @@ module Juhe
     end
 
     module ClassMethods
-      def company_code_of(company_name, app_key = nil)
-        refresh_companies(app_key) if @companies.nil?
+      def company_code_of(company_name, options = nil)
+        refresh_companies(options) if @companies.nil?
 
         @companies.each do |company|
           return company["no"] if company["com"] == company_name
         end
       end
 
-      def refresh_companies(app_key)
-        app_key ||= Juhe.app_key
+      def refresh_companies(options)
+        app_key = (options[:app_key] if options) || Juhe.app_key
         result = JSON.parse(open(BASE_URL+"?key="+app_key).read)
         raise result["reason"] if result["resultcode"] != "200"
         @companies = result["result"]
@@ -37,13 +37,13 @@ module Juhe
 
     BASE_URL = "http://v.juhe.cn/exp/index"
 
-    def self.search(company_name, number, app_key = nil)
-      app_key ||= Juhe.app_key
+    def self.search(company_name, number, options = nil)
+      app_key = (options[:app_key] if options) || Juhe.app_key
       url = BASE_URL \
             + "?key=" \
             + app_key \
             + "&no=" + number \
-            + "&com=" + company_code_of(company_name, app_key)
+            + "&com=" + company_code_of(company_name, options)
 
       result = JSON.parse(open(url).read)
       raise result["reason"] if result["resultcode"] != "200"

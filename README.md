@@ -35,9 +35,9 @@ Juhe::Express.search("顺丰", "575677355677", "d85fa433fb8f30419dc1b3697b035b3d
 ```ruby
 [
   {
-    "datetime":"2013-06-25 10:44:05",# 时间
-    "remark":"已收件",# 描述
-    "zone":"台州市"# 区域
+    "datetime":"2013-06-25 10:44:05", # 时间
+    "remark":"已收件", # 描述
+    "zone":"台州市" # 区域
   },
   {
   "datetime":"2013-06-25 11:05:21",
@@ -80,4 +80,10 @@ Juhe::Express.search("顺丰", "575677355677", "d85fa433fb8f30419dc1b3697b035b3d
   "zone":"西安市/咸阳市"
   }
 ]
+```
+程序第一次运行会获取快递公司列表，如果想手动刷新快递公司信息：
+```ruby
+Juhe::Express.refresh_companies
+# or
+Juhe::Express.refresh_companies("d85fa433fb8f30419dc1b3697b035b3d")
 ```

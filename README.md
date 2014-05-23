@@ -83,6 +83,7 @@ Juhe::Express.search("顺丰", "575677355677", app_key: "d85fa433fb8f30419dc1b36
 ```
 程序第一次运行会获取快递公司列表，如果想手动刷新快递公司信息：
 ```ruby
+Juhe.app_key = "d85fa433fb8f30419dc1b3697b035b3d"
 Juhe::Express.refresh_companies
 # or
 Juhe::Express.refresh_companies(app_key: "d85fa433fb8f30419dc1b3697b035b3d")

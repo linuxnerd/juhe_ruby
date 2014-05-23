@@ -6,11 +6,11 @@ require 'juhe_ruby/version'
 Gem::Specification.new do |spec|
   spec.name          = "juhe_ruby"
   spec.version       = JuheRuby::VERSION
-  spec.authors       = ["sunday35034"]
+  spec.authors       = ["linuxnerd"]
   spec.email         = ["lwc_evale@hotmail.com"]
-  spec.description   = %q{TODO: Write a gem description}
-  spec.summary       = %q{TODO: Write a gem summary}
-  spec.homepage      = ""
+  spec.description   = %q{"聚合ruby api"}
+  spec.summary       = %q{"聚合ruby api"}
+  spec.homepage      = "https://github.com/linuxnerd/juhe_ruby"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files`.split($/)

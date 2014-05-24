@@ -24,9 +24,9 @@ $ gem install juhe_ruby
 ### 常用快递查询
 目前支持的快递公司，`%w[顺丰 申通 圆通 韵达 天天 EMS 中通 汇通]`详细的请在[聚合页面](http://www.juhe.cn/docs/api/id/43/aid/103)上查询。api在第一次查询的时候也会调用支持快递公司查询借口。
 
-具体用法为app_key一次赋值，多次查询：
+具体用法为express_app_key一次赋值，多次查询：
 ```ruby
-Juhe.app_key = "d85fa433fb8f30419dc1b3697b035b3d" # 注册时，聚合提供的app_key
+Juhe.express_app_key = "d85fa433fb8f30419dc1b3697b035b3d" # 注册时，聚合提供的app_key
 Juhe::Express.search("顺丰", "575677355677")
 ```
 或者直接将app_key作为参数:
@@ -85,7 +85,7 @@ Juhe::Express.search("顺丰", "575677355677", app_key: "d85fa433fb8f30419dc1b36
 ```
 程序第一次运行会获取快递公司列表，如果想手动刷新快递公司信息：
 ```ruby
-Juhe.app_key = "d85fa433fb8f30419dc1b3697b035b3d"
+Juhe.express_app_key = "d85fa433fb8f30419dc1b3697b035b3d"
 Juhe::Express.refresh_companies
 # or
 Juhe::Express.refresh_companies(app_key: "d85fa433fb8f30419dc1b3697b035b3d")

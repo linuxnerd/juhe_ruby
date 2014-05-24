@@ -27,4 +27,11 @@ class Juhe::ExpressTest < Test::Unit::TestCase
     )
     assert_equal(result["com"], "sf")
   end
+
+  def test_only_the_first_query_company_uses_appkey
+    first_time = Juhe::Express.company_code_of("申通") # => "sto"
+    Juhe::app_key = "wrong app key"
+    second_time = Juhe::Express.company_code_of("申通")
+    assert_equal(first_time, second_time)
+  end
 end

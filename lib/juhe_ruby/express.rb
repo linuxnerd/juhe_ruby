@@ -10,7 +10,7 @@ module Juhe
     end
 
     def self.search(company_name, number, options = nil)
-      app_key = (options[:app_key] if options) || Juhe.express_app_key
+      app_key = (options[:app_key] if options) || Juhe::Express.app_key
       url = BASE_URL \
             + "/index?key=" \
             + app_key \
@@ -31,7 +31,7 @@ module Juhe
     end
 
     def self.refresh_companies(options)
-      app_key = (options[:app_key] if options) || Juhe.express_app_key
+      app_key = (options[:app_key] if options) || Juhe::Express.app_key
       result = JSON.parse(open(BASE_URL+"/com?key="+app_key).read)
       raise result["reason"] if result["resultcode"] != "200"
       @companies = result["result"]

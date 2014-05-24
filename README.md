@@ -27,7 +27,7 @@ api在第一次查询时也会调用快递公司查询接口。
 
 具体用法设置app_key，然后进行查询：
 ```ruby
-Juhe.express_app_key = "d85fa433fb8f30419dc1b3697b035b3d" # 注册时，聚合提供的app_key
+Juhe::Express.app_key = "d85fa433fb8f30419dc1b3697b035b3d" # 注册时，聚合提供的app_key
 Juhe::Express.search("顺丰", "575677355677")
 ```
 或者直接将app_key作为参数:
@@ -86,7 +86,7 @@ Juhe::Express.search("顺丰", "575677355677", app_key: "d85fa433fb8f30419dc1b36
 ```
 程序第一次运行会获取快递公司列表，如果想手动刷新快递公司信息：
 ```ruby
-Juhe.express_app_key = "d85fa433fb8f30419dc1b3697b035b3d"
+Juhe::Express.app_key = "d85fa433fb8f30419dc1b3697b035b3d"
 Juhe::Express.refresh_companies
 # or
 Juhe::Express.refresh_companies(app_key: "d85fa433fb8f30419dc1b3697b035b3d")

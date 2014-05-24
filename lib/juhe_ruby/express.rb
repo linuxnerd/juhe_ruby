@@ -3,8 +3,6 @@ require "json"
 
 module Juhe
   module Express
-    BASE_URL = "http://v.juhe.cn/exp"
-
     class << self
       attr_accessor :companies
     end

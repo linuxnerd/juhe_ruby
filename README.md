@@ -3,6 +3,7 @@
 [聚合](http://www.juhe.cn/)ruby api，目前完成了以下功能：
 
  - 常用快递查询
+ - 电影票房
 
 ## 安装
 
@@ -90,4 +91,23 @@ Juhe::Express.app_key = "d85fa433fb8f30419dc1b3697b035b3d"
 Juhe::Express.refresh_companies
 # or
 Juhe::Express.refresh_companies(app_key: "d85fa433fb8f30419dc1b3697b035b3d")
+```
+
+### 电影票房
+#### 最新票房榜
+票房榜的区域,CN-内地，US-北美，HK-香港。
+示例：
+```ruby
+Juhe::Boxoffice.app_key = "d85fa433fd8430419dc1b3697b035b3d"
+Juhe::Boxoffice.latest("HK") # 香港最新票房榜
+# 或者app_key直接作为参数
+Juhe::Boxoffice.latest("HK", app_key: "d85fa433fd8430419dc1b3697b035b3d") # 香港最新票房榜
+```
+#### 网票票房
+示例：
+```ruby
+Juhe::Boxoffice.app_key = "d85fa433fd8430419dc1b3697b035b3d"
+Juhe::Boxoffice.wp # 网票票房
+# 或者app_key直接作为参数
+Juhe::Boxoffice.wp(app_key: "d85fa433fd8430419dc1b3697b035b3d") # 网票票房
 ```

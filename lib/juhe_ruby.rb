@@ -1,13 +1,15 @@
 require "juhe_ruby/version"
 require "juhe_ruby/express"
+require "juhe_ruby/boxoffice"
 
 module Juhe
   URLS = {
-    Express: "http://v.juhe.cn/exp"
+    Express: "http://v.juhe.cn/exp",          # 常用快递查询
+    Boxoffice: "http://v.juhe.cn/boxoffice"   # 电影票房
   }
 
   class << self
-    # Array of module names
+    # Array of modules
     modules = Juhe.constants.map{ |el| Juhe.const_get(el) }.select{ |m| m.instance_of?(Module) }
     modules.each do |mod|
       if mod.to_s =~ /\AJuhe::(.*)/

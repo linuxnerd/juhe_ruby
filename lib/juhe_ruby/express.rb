@@ -10,8 +10,7 @@ module Juhe
     def self.search(company_name, number, options = nil)
       app_key = (options[:app_key] if options) || Juhe::Express.app_key
       url = BASE_URL \
-            + "/index?key=" \
-            + app_key \
+            + "/index?key=" + app_key \
             + "&no=" + number \
             + "&com=" + company_code_of(company_name, options)
 

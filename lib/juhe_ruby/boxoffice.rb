@@ -3,6 +3,7 @@ require "json"
 
 module Juhe
   module Boxoffice
+
     def self.latest(area, options = nil)
       app_key = (options[:app_key] if options) || Juhe::Boxoffice.app_key
 
@@ -14,6 +15,7 @@ module Juhe
       result["result"]
     end
 
+
     def self.wp(options = nil)
       app_key = (options[:app_key] if options) || Juhe::Boxoffice.app_key
 
@@ -23,5 +25,6 @@ module Juhe
       raise result["reason"] if result["resultcode"] != "200"
       result["result"]
     end
+
   end
 end

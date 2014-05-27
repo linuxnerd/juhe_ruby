@@ -3,9 +3,11 @@ require "json"
 
 module Juhe
   module Express
+
     class << self
       attr_accessor :companies
     end
+
 
     def self.search(company_name, number, options = nil)
       app_key = (options[:app_key] if options) || Juhe::Express.app_key
@@ -19,6 +21,7 @@ module Juhe
       result["result"]
     end
 
+
     def self.company_code_of(company_name, options = nil)
       refresh_companies(options) if @companies.nil?
 
@@ -26,6 +29,7 @@ module Juhe
         return company["no"] if company["com"] == company_name
       end
     end
+
 
     def self.refresh_companies(options)
       app_key = (options[:app_key] if options) || Juhe::Express.app_key

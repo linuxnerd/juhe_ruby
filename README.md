@@ -1,4 +1,5 @@
 # JuheRuby
+[![Gem Version](https://badge.fury.io/rb/juhe_ruby.svg)](http://badge.fury.io/rb/juhe_ruby)
 
 [聚合](http://www.juhe.cn/)ruby api，目前完成了以下功能：
 

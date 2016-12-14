@@ -1,6 +1,6 @@
 require "test_helper.rb"
 
-class Juhe::BoxofficeTest < Test::Unit::TestCase
+class Juhe::BoxofficeTest < Minitest::Test
   def setup
     Juhe::Boxoffice.app_key = "8b5f6d4adb46123938ebad000ca09300"
   end

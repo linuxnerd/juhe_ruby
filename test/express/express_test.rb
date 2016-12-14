@@ -1,6 +1,6 @@
 require "test_helper"
 
-class Juhe::ExpressTest < Test::Unit::TestCase
+class Juhe::ExpressTest < Minitest::Test
   def setup
     Juhe::Express.app_key = "d85fa433fd8f30419dc1b3697b035b3d"
   end

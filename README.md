@@ -3,6 +3,8 @@
 
 [聚合](http://www.juhe.cn/)ruby api，目前完成了以下功能：
 
+ - 身份证实名认证
+ - 身份证查询
  - 常用快递查询
  - 电影票房
 
@@ -22,17 +24,50 @@ $ bundle
 $ gem install juhe_ruby
 ```
 ## 用法
+先创建文件`config/initializers/juhe_ruby_config.rb`设置各接口的app_key
+```ruby
+Juhe::IdVerify.app_key = "54be350eb2fdefe5a9a087bf6669cc68"
+Juhe::IdCard.app_key = "54be350eb2fdefe5a9a087bf6669cc68"
+Juhe::Express.app_key = "d85fa433fb8f30419dc1b3697b035b3d"
+Juhe::Boxoffice.app_key = "d85fa433fd8430419dc1b3697b035b3d"
+```
+
+### 身份证实名认证
+如果事先设置了app_key，就直接进行查询认证：
+```ruby
+Juhe::IdVerify.search("32010819820114203X","王大锤")
+```
+或者直接将app_key作为参数：
+```ruby
+Juhe::IdVerify.search("32010819820114203X","王大锤", app_key: "54be350eb2fdefe5a9a087bf6669cc68")
+```
+应答后返回的json格式，如果请求失败会抛出异常：
+```ruby
+{
+  "realname": "董好帅",/*真实姓名*/
+  "idcard": "330329199001020012",/*身份证号码*/
+  "res": 1 /*1：匹配 2：不匹配*/
+}
+```
+获取应答结果的方式：
+```ruby
+result=Juhe::IdVerify.search("32010819820114203X","王大锤")
+if(result["res"] == 0)
+  puts "实名认证匹配通过
+else if(result["res"] == 1)
+  puts "实名认证匹配未通过
+end
+```
 
 ### 常用快递查询
 目前支持的快递公司，`%w[顺丰 申通 圆通 韵达 天天 EMS 中通 汇通]`详细的请在[聚合页面](http://www.juhe.cn/docs/api/id/43/aid/103)上查看。
 api在第一次查询时也会调用快递公司查询接口。
 
-具体用法设置app_key，然后进行查询：
+如果事先设置了app_key，就直接进行查询认证：
 ```ruby
-Juhe::Express.app_key = "d85fa433fb8f30419dc1b3697b035b3d" # 注册时，聚合提供的app_key
 Juhe::Express.search("顺丰", "575677355677")
 ```
-或者直接将app_key作为参数:
+或者直接将app_key作为参数：
 ```ruby
 Juhe::Express.search("顺丰", "575677355677", app_key: "d85fa433fb8f30419dc1b3697b035b3d")
 ```
@@ -88,7 +123,6 @@ Juhe::Express.search("顺丰", "575677355677", app_key: "d85fa433fb8f30419dc1b36
 ```
 程序第一次运行会获取快递公司列表，如果想手动刷新快递公司信息：
 ```ruby
-Juhe::Express.app_key = "d85fa433fb8f30419dc1b3697b035b3d"
 Juhe::Express.refresh_companies
 # or
 Juhe::Express.refresh_companies(app_key: "d85fa433fb8f30419dc1b3697b035b3d")
@@ -99,7 +133,6 @@ Juhe::Express.refresh_companies(app_key: "d85fa433fb8f30419dc1b3697b035b3d")
 票房榜的区域,CN-内地，US-北美，HK-香港。
 示例：
 ```ruby
-Juhe::Boxoffice.app_key = "d85fa433fd8430419dc1b3697b035b3d"
 Juhe::Boxoffice.latest("HK") # 香港最新票房榜
 # 或者app_key直接作为参数
 Juhe::Boxoffice.latest("HK", app_key: "d85fa433fd8430419dc1b3697b035b3d") # 香港最新票房榜
@@ -183,7 +216,6 @@ Juhe::Boxoffice.latest("HK", app_key: "d85fa433fd8430419dc1b3697b035b3d") # 香�
 #### 网票票房
 示例：
 ```ruby
-Juhe::Boxoffice.app_key = "d85fa433fd8430419dc1b3697b035b3d"
 Juhe::Boxoffice.wp # 网票票房
 # 或者app_key直接作为参数
 Juhe::Boxoffice.wp(app_key: "d85fa433fd8430419dc1b3697b035b3d") # 网票票房

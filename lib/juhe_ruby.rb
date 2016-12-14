@@ -1,11 +1,15 @@
 require "juhe_ruby/version"
 require "juhe_ruby/express"
 require "juhe_ruby/boxoffice"
+require "juhe_ruby/idcard"
+require "juhe_ruby/id_verify"
 
 module Juhe
   URLS = {
     Express: "http://v.juhe.cn/exp",          # 常用快递查询
-    Boxoffice: "http://v.juhe.cn/boxoffice"   # 电影票房
+    Boxoffice: "http://v.juhe.cn/boxoffice",  # 电影票房
+    IdCard: "http://apis.juhe.cn/idcard",     # 身份证查询
+    IdVerify: "http://op.juhe.cn/idcard"      # 实名认证
   }
 
   class << self

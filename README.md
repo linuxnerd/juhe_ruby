@@ -17,7 +17,7 @@ gem 'juhe_ruby'
 
 然后执行:
 ```ruby
-$ bundle
+$ bundle install
 ```
 或者自行安装:
 ```ruby

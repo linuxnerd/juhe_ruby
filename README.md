@@ -53,9 +53,9 @@ Juhe::IdVerify.search("32010819820114203X","王大锤", app_key: "54be350eb2fdef
 ```ruby
 result=Juhe::IdVerify.search("32010819820114203X","王大锤")
 if(result["res"] == 0)
-  puts "实名认证匹配通过
+  puts "实名认证匹配通过"
 else if(result["res"] == 1)
-  puts "实名认证匹配未通过
+  puts "实名认证匹配未通过"
 end
 ```
 

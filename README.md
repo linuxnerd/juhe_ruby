@@ -58,6 +58,30 @@ else if(result["res"] == 1)
   puts "实名认证匹配未通过"
 end
 ```
+### 身份证查询
+如果事先设置了app_key，就直接进行查询认证：
+```ruby
+Juhe::IdCard.search("32010819820114203X")
+```
+或者直接将app_key作为参数：
+```ruby
+Juhe::IdCard.search("32010819820114203X", app_key: "54be350eb2fdefe5a9a087bf6669cc68")
+```
+
+应答后返回的json格式，如果请求失败会抛出异常：
+```ruby
+{
+  "area":"浙江省温州市平阳县",
+  "sex":"男",
+  "birthday":"1989年03月08日"
+}
+```
+获取应答结果的方式：
+```ruby
+result=Juhe::IdCard.search("32010819820114203X")
+pust(result["area"])
+```
+
 
 ### 常用快递查询
 目前支持的快递公司，`%w[顺丰 申通 圆通 韵达 天天 EMS 中通 汇通]`详细的请在[聚合页面](http://www.juhe.cn/docs/api/id/43/aid/103)上查看。

@@ -14,8 +14,16 @@ module Juhe
 
       result = JSON.parse(open(url).read)
 
-      result["error_code"] = 0 if result["error_code"] != 210301 # 身份证不存在
-      
+      # 210301 身份证不存在，210304 身份证不合法
+      if(result["error_code"] == 210301 or result["error_code"] == 210304)
+        result["error_code"] = 0
+        result["result"] = {
+          realname: name,
+          idcard: cardno,
+          res: 2
+        }
+      end
+
       raise result["reason"] if result["error_code"] != 0
       result["result"]
     end

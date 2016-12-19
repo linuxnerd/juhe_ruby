@@ -14,12 +14,12 @@ class Juhe::IdCardTest < Minitest::Test
     assert_equal(Juhe::IdCard.search("310108198701142032")["area"], "上海市闸北区")
   end
 
-  # def test_search_with_app_key
-  #   Juhe::IdCard.app_key = ""
-  #   result = Juhe::IdCard.search(
-  #     "310108198701142032",
-  #     app_key: "54be350eb2fdefe5a9a087bf6669cc68"
-  #   )
-  #   assert_equal(result["area"], "上海市闸北区")
-  # end
+  def test_search_with_app_key
+    Juhe::IdCard.app_key = ""
+    result = Juhe::IdCard.search(
+      "310108198701142032",
+      app_key: "54be350eb2fdefe5a9a087bf6669cc68"
+    )
+    assert_equal(result["area"], "上海市闸北区")
+  end
 end

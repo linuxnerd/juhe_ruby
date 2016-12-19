@@ -18,9 +18,9 @@ module Juhe
       if(result["error_code"] == 210301 or result["error_code"] == 210304)
         result["error_code"] = 0
         result["result"] = {
-          realname: name,
-          idcard: cardno,
-          res: 2
+          "realname"=> name,
+          "idcard"=> cardno,
+          "res"=> 2
         }
       end
 

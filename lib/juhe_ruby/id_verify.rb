@@ -13,6 +13,9 @@ module Juhe
             "&realname=" + URI::encode(name)
 
       result = JSON.parse(open(url).read)
+
+      result["error_code"] = 0 if result["error_code"] != 210301 # 身份证不存在
+      
       raise result["reason"] if result["error_code"] != 0
       result["result"]
     end

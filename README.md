@@ -26,8 +26,8 @@ $ gem install juhe_ruby
 ## 用法
 先创建文件`config/initializers/juhe_ruby_config.rb`设置各接口的app_key
 ```ruby
-Juhe::IdVerify.app_key = "54be350eb2fdefe5a9a087bf6669cc68"
-Juhe::IdCard.app_key = "54be350eb2fdefe5a9a087bf6669cc68"
+Juhe::IdVerify.app_key = "d85fa433fb8f30419dc1b3697b035b3d"
+Juhe::IdCard.app_key = "d85fa433fb8f30419dc1b3697b035b3d"
 Juhe::Express.app_key = "d85fa433fb8f30419dc1b3697b035b3d"
 Juhe::Boxoffice.app_key = "d85fa433fd8430419dc1b3697b035b3d"
 ```

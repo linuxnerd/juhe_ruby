@@ -8,8 +8,8 @@ Gem::Specification.new do |spec|
   spec.version       = JuheRuby::VERSION
   spec.authors       = ["linuxnerd"]
   spec.email         = ["lwc_evale@hotmail.com"]
-  spec.description   = %q{"聚合ruby api"}
-  spec.summary       = %q{"聚合ruby api"}
+  spec.description   = %q{"聚合数据 api"}
+  spec.summary       = %q{"聚合数据 api"}
   spec.homepage      = "https://github.com/linuxnerd/juhe_ruby"
   spec.license       = "MIT"
 
